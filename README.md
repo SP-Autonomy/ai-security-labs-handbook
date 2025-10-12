@@ -170,9 +170,9 @@ Autonomous system governance
 
 | Step | Action |
 |------|--------|
-| 1️⃣ | 📚 Start Here → Lab 01 (Fundamentals) → Lab 02 (RAG Security) → Lab 03 (Agents) → 🎓 Mastery |
-| 2️⃣ | ↓ Understand Gateway Pattern |
-| 3️⃣ | ↓ Apply to Your Use Case |
+| 1️⃣ | 📚 Start Here → Lab 01 (Fundamentals) |
+| 2️⃣ | ↓ Lab 02 (RAG Security) |
+| 3️⃣ | ↓ Lab 03 (Agents) |
 
 > **💡 Recommended**: Complete labs in order. Each builds on concepts from the previous.
 
