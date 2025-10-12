@@ -177,7 +177,15 @@ Autonomous system governance
 > **💡 Recommended**: Complete labs in order. Each builds on concepts from the previous.
 
 ---
+### Lab-Specific Learning
 
+| Lab | You'll Master |
+|-----|--------------|
+| **Lab 01** | PII masking, injection detection, ABAC policies, performance monitoring |
+| **Lab 02** | Context security, retrieval auth, citation tracking, embedding safety |
+| **Lab 03** | Tool authorization, sandboxing, decision auditing, governance frameworks |
+
+---
 ## 🚀 Quick Start
 
 ### Prerequisites
@@ -208,18 +216,3 @@ GEN_MODEL=llama3.2:1b
 OLLAMA_HOST=http://localhost:11434
 OPA_URL=http://localhost:8181/v1/data/ai/policy/allow
 ```
-
-### Choose Your Lab
-Each lab has detailed setup instructions:
-
-🔐 Lab 01: PII-Safe Summarizer - Start here!
-🔍 Lab 02: Secure RAG Copilot - Coming soon
-🤖 Lab 03: Governed AI Agents - Coming soon
-
-### Lab-Specific Learning
-
-| Lab | You'll Master |
-|-----|--------------|
-| **Lab 01** | PII masking, injection detection, ABAC policies, performance monitoring |
-| **Lab 02** | Context security, retrieval auth, citation tracking, embedding safety |
-| **Lab 03** | Tool authorization, sandboxing, decision auditing, governance frameworks |
