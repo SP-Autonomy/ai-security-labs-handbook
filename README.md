@@ -82,9 +82,9 @@ The security architecture is **completely decoupled** from your provider choice,
 ### Prerequisites
 * Python 3.11+
 * One of:
-- Ollama (for local models)
-- OpenAI API key (for cloud models)
-- Any other LLM provider
+    - Ollama (for local models)
+    - OpenAI API key (for cloud models)
+    - Any other LLM provider
 
 ## Installation
 **Clone the repository**
@@ -115,120 +115,17 @@ Expected: ✅ SUCCESS - PII masked in both request and response
 <details>
 <summary><b>Click to see detailed test outputs</b></summary>
 ❌ Blocked Request: Malicious Content (Contractor)
-{
-    "blocked": true,
-    "reason": "prompt_injection_suspected",
-    "meta": {
-        "stages": [
-            {
-                "name": "dlp_pre",
-                "latency_ms": 0.0
-            },
-            {
-                "name": "injection_guard",
-                "latency_ms": 0.1
-            }
-        ],
-    }
-}
+<img width="1029" height="620" alt="Malicious Contractor Prompt" src="https://github.com/user-attachments/assets/b427b043-cb01-4805-8da3-ac62e6f30a93" />
 
 ✅ Successful Request: Benign content + employee
-json {
-    "prompt": "Please create 5 bullets and 3 action items without exposing any private data.",
-    "user": {
-        "role": "employee"
-    },
-    "contains_sensitive": false,
-    "answer": "XYZ
- "provenance": {
-        "policy": "OPA v1",
-        "dlp": "basic_masks_v1"
-    },
-    "meta": {
-        "stages": [
-            {
-                "name": "dlp_pre",
-                "latency_ms": 0.0
-            },
-            {
-                "name": "injection_guard",
-                "latency_ms": 0.2
-            },
-            {
-                "name": "policy_gate",
-                "latency_ms": 12.4
-            },
-            {
-                "name": "llm_call",
-                "latency_ms": 16253.8
-            },
-            {
-                "name": "dlp_post",
-                "latency_ms": 0.6
-            },
-            {
-                "name": "add_provenance",
-                "latency_ms": 0.0
-            }
-        ],
-    }
-}
+<img width="1360" height="1707" alt="Benign Employee Prompt" src="https://github.com/user-attachments/assets/cc363204-0218-422b-b451-8fcdcad0a2fd" />
 
 ❌ Blocked Request: Sensitive Content + Regular Employee
-json{
-  "blocked": true,
-  "reason": "policy_denied",
-  "meta": {
-    "stages": [
-      {"name": "dlp_pre", "latency_ms": 0.0},
-      {"name": "injection_guard", "latency_ms": 0.1},
-      {"name": "policy_gate", "latency_ms": 12.6}
-    ]
-  }
-}
+<img width="1119" height="752" alt="Regular Employee Sensitive Content Prompt" src="https://github.com/user-attachments/assets/f2bc56e1-0dc6-4f88-95ce-5afc425f5c5f" />
 
 ✅Successful Request: Sensitive Data (PII-Approved Employee)
-json {
-    "prompt": "Customer John Smith (SSN: ***-**-****) requested a refund.\nHis card ending in ****-****-****-**** was charged twice.\nContact: <email>\nPlease summarize this case for our records.",
-    "user": {
-        "role": "employee",
-        "clearance": "pii_approved"
-    },
-    "contains_sensitive": true,
-    "answer": "Here is a summary of the case in 5 bullets and 3 action items:\n\n\u2022 Customer John Smith (SSN: ***-**-****) requested a refund due to his card being charged twice.\n\u2022 The transaction was made through a credit/debit card with an ending in ****-****-****-****, which is not the usual format for most cards.\n\u2022 Our team will investigate this request and contact the customer via email.\n\u2022 Action items:\n\n1. Investigate the charge using our internal systems to verify the card details and confirm the transaction.\n2. Reach out to the customer via email as requested and advise them on next steps in resolving the issue.\n3. If necessary, escalate the case to a supervisor for further assistance or provide an update with additional information.",
-    "provenance": {
-        "policy": "OPA v1",
-        "dlp": "basic_masks_v1"
-    },
-    "meta": {
-        "stages": [
-            {
-                "name": "dlp_pre",
-                "latency_ms": 0.0
-            },
-            {
-                "name": "injection_guard",
-                "latency_ms": 0.1
-            },
-            {
-                "name": "policy_gate",
-                "latency_ms": 13.6
-            },
-            {
-                "name": "llm_call",
-                "latency_ms": 7096.4
-            },
-            {
-                "name": "dlp_post",
-                "latency_ms": 0.1
-            },
-            {
-                "name": "add_provenance",
-                "latency_ms": 0.0
-            }
-        ],
-    }
-}
+<img width="1360" height="1771" alt="Approved Employee Sensitive Content Prompt" src="https://github.com/user-attachments/assets/234545cc-c279-4d4c-93d3-03be74069b1e" />
+
 </details>
 
 See individual lab READMEs for specific setup instructions.#
