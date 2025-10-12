@@ -26,7 +26,7 @@ Test Matrix
 <td>-</td>
 <td>❌ No</td>
 <td>❌ No</td>
-<td>✅ SUCCESS<br/>Generates summary</td>
+<td>✅ SUCCESS</td>
 </tr>
 <tr>
 <td><strong>Test 3</strong><br/>Sensitive Information + Regular Employee</td>
