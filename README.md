@@ -11,47 +11,47 @@ A comprehensive hands-on laboratory series demonstrating production-grade AI sec
 This handbook provides **practical, runnable examples** of AI security implementations that work across different deployment models - whether you're using local open-source models (with Ollama), cloud APIs (OpenAI, Anthropic), or proprietary in-house models.
 
 ### 🔑 Core Concept: Provider-Agnostic Security
-Security layers operate independently of your LLM provider, making your security investment portable and future-proof.
-
 **Defense-in-Depth Architecture**: Multiple independent security layers that work regardless of your LLM provider.
 
-```mermaid
-flowchart TB
-    subgraph app["🎯 Your Application Layer"]
-    A[FastAPI Endpoint]
-    end
-    
-    subgraph gateway["🛡️ Security Gateway - Provider Agnostic"]
-        subgraph pre["📥 Pre-Processing"]
-        B1[PII Detection & Masking]
-        B2[Prompt Injection Detection]
-        B3[Policy Enforcement OPA]
-        B4[Input Validation]
-        end
-        
-        subgraph llm["🔌 LLM Provider - Interchangeable"]
-        C1[Ollama Local]
-        C2[OpenAI / Anthropic]
-        C3[Azure OpenAI]
-        C4[Custom In-House]
-        end
-        
-        subgraph post["📤 Post-Processing"]
-        D1[Output Sanitization]
-        D2[Response DLP]
-        D3[Provenance Tracking]
-        end
-    end
-    
-    A --> B1 --> B2 --> B3 --> B4
-    B4 --> C1 & C2 & C3 & C4
-    C1 & C2 & C3 & C4 --> D1 --> D2 --> D3
-    
-    style app fill:#e1f5ff
-    style gateway fill:#fff4e6
-    style pre fill:#f3e5f5
-    style llm fill:#e8f5e9
-    style post fill:#fce4ec
+<table>
+<tr>
+<td colspan="2" align="center"><strong>🎯 Your Application Layer</strong></td>
+</tr>
+<tr>
+<td colspan="2" align="center">⬇️</td>
+</tr>
+<tr>
+<td colspan="2" align="center" bgcolor="#fff4e6"><strong>🛡️ Security Gateway (Provider-Agnostic)</strong></td>
+</tr>
+<tr>
+<td width="50%" valign="top">
+<strong>📥 Pre-Processing</strong>
+<ul>
+<li>✓ PII Detection & Masking</li>
+<li>✓ Prompt Injection Detection</li>
+<li>✓ Policy Enforcement (OPA)</li>
+<li>✓ Input Validation</li>
+</ul>
+</td>
+<td width="50%" valign="top">
+<strong>📤 Post-Processing</strong>
+<ul>
+<li>✓ Output Sanitization</li>
+<li>✓ Response DLP</li>
+<li>✓ Provenance Tracking</li>
+</ul>
+</td>
+</tr>
+<tr>
+<td colspan="2" align="center">⬇️</td>
+</tr>
+<tr>
+<td colspan="2" align="center" bgcolor="#e8f5e9">
+<strong>🔌 LLM Provider (Interchangeable)</strong><br/>
+Ollama (Local) • OpenAI/Anthropic (Cloud) • Azure OpenAI (Enterprise) • Custom In-House
+</td>
+</tr>
+</table>
 
 **The key insight**: Security processors operate on requests/responses as data structures - they don't care where the LLM lives or how it's called. Only the thin provider layer changes.
 
