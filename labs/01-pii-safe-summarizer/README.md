@@ -1,4 +1,146 @@
+# Lab 01: PII-Safe Summarizer 🔐
+
+<div align="center">
+
+**Foundation Security Patterns for LLM Applications**
+
+[![Lab Status](https://img.shields.io/badge/status-complete-success.svg)](.)
+[![Difficulty](https://img.shields.io/badge/difficulty-beginner-green.svg)](.)
+[![Time](https://img.shields.io/badge/time-2--3%20hours-blue.svg)](.)
+
+[🔒 Security Layers](#security-layers) • [🚀 Setup](#-setup) • [🧪 Test Scenarios](#-test-scenarios) • [📊 Performance](#-performance-analysis)
+
+</div>
+
+---
+
+## 🎯 Overview
+
+A document summarization service demonstrating **foundational AI security patterns** that apply to all LLM applications. This lab teaches you to build security layers that work regardless of your LLM provider.
+
+### What This Lab Covers
+
+<table>
+<tr>
+<td width="50%">
+
+**🔒 Security Features:**
+- ✅ Data Loss Prevention (DLP)
+- ✅ Prompt Injection Detection
+- ✅ Attribute-Based Access Control (ABAC)
+- ✅ Performance Monitoring
+- ✅ Audit Trail & Provenance
+
+</td>
+<td width="50%">
+
+**💼 Real-World Use Cases:**
+- 🏢 Financial services (protect customer PII)
+- 🏥 Healthcare (HIPAA compliance)
+- 🏛️ Government (classified data handling)
+- 💼 Enterprise SaaS (multi-tenant security)
+
+</td>
+</tr>
+</table>
+
+### Learning Objectives
+
+By completing this lab, you will:
+
+1. **Understand** defense-in-depth architecture for AI applications
+2. **Implement** PII detection and masking at scale
+3. **Deploy** policy-based access control with OPA
+4. **Monitor** security and performance in production
+5. **Apply** these patterns to any LLM provider
+
+---
+
+## 🏗️ Architecture
+
+### Security Processing Chain
+```mermaid
+graph LR
+    A[User Request] --> B[DLP Pre]
+    B --> C[Injection Guard]
+    C --> D[Policy Gate]
+    D --> E{Allowed?}
+    E -->|Yes| F[LLM Call]
+    E -->|No| G[Block & Log]
+    F --> H[DLP Post]
+    H --> I[Add Provenance]
+    I --> J[Response]
+    
+    style B fill:#f3e5f5
+    style C fill:#fff4e6
+    style D fill:#e1f5ff
+    style F fill:#e8f5e9
+    style H fill:#fce4ec
+    style G fill:#ffebee
+```
+### Security Layers
+
+| Layer | Purpose | Latency | Blocks On |
+|-------|---------|---------|-----------|
+| **1. DLP Pre** | Mask PII in input | <1ms | - |
+| **2. Injection Guard** | Detect prompt attacks | <1ms | Suspicious patterns |
+| **3. Policy Gate** | Enforce ABAC rules | ~13ms | Role + sensitivity mismatch |
+| **4. LLM Call** | Generate response | ~5-20s | - |
+| **5. DLP Post** | Mask PII in output | <1ms | - |
+| **6. Provenance** | Add audit metadata | <1ms | - |
+
+---
+
+## 🚀 Setup
+
+### Prerequisites
+
+- ✅ Python 3.11+
+- ✅ [Ollama](https://ollama.com/download) installed (or OpenAI API key)
+- ✅ [OPA](https://www.openpolicyagent.org/docs/latest/#running-opa) installed
+
+### Quick Start
+
+**Step 1: Install Dependencies**
+```bash
+# From repository root
+cd ai-security-labs-handbook
+source .venv/bin/activate  # If not already activated
+pip install -r requirements.txt
+```
+**Step 2: Configure Environment Variables**
+```bash
+nano .env
+MODEL_PROVIDER=ollama
+GEN_MODEL=llama3.2:1b
+OLLAMA_HOST=http://localhost:11434
+OPA_URL=http://localhost:8181/v1/data/ai/policy/allow
+```
+**Step 3: Pull Model (Ollama users)**
+```bash
+ollama pull llama3.2:1b
+```
+**Step 4: Start Services**
+```bash
+ollama serve
+make run-opa
+make run-api
+```
+
 ## 🧪 Test Scenarios
+### Running Tests
+**Run all tests:**
+```bash
+make test-all
+```
+**Run individual tests:**
+```bash
+make test-malicious-contractor           # Test 1
+make test-benign-employee                # Test 2
+make test-sensitive-employee-denied      # Test 3
+make test-sensitive-employee-approved    # Test 4
+```
+
 **Test Matrix**
 <table>
 <thead>
