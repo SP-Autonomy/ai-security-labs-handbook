@@ -8,7 +8,7 @@
 [![Difficulty](https://img.shields.io/badge/difficulty-beginner-green.svg)](.)
 [![Time](https://img.shields.io/badge/time-2--3%20hours-blue.svg)](.)
 
-[🔒 Security Layers](#security-layers) • [🚀 Setup](#-setup) • [🧪 Test Scenarios](#-test-scenarios) • [📊 Performance](#-performance-analysis)
+[🔒 Security Layers](#security-layers) • [🚀 Setup](#-setup) • [🧪 Test Scenarios](#-test-scenarios) • [📊 Performance](#-performance-analysis) • [⚖️ Cost-Benefit Analysis](#cost-benefit-analysis)
 
 </div>
 
@@ -224,8 +224,6 @@ Based on real measurements from the running system:
 
 > **💡 Key Finding:** Security overhead is only **13.2ms (0.08%)** of total request time.
 
----
-
 ### Performance Insights
 
 **Blocked requests never reach the LLM**, saving:
@@ -235,16 +233,16 @@ Based on real measurements from the running system:
 
 ---
 
-### Cost-Benefit Analysis
+## ⚖️ Cost-Benefit Analysis
 
-#### Security Benefits
+### Security Benefits
 
 - ✅ **Prevents data leaks** - PII never reaches LLM
 - ✅ **Blocks attacks** - Injection attempts stopped in <1ms
 - ✅ **Enforces policies** - Authorization in ~13ms
 - ✅ **Audit compliance** - Every request tracked
 
-#### Performance Cost
+### Performance Cost
 
 | Without Security | With Security | Overhead |
 |-----------------|---------------|----------|
