@@ -89,6 +89,33 @@ A document summarization service with comprehensive security controls.
 ---
 See individual lab READMEs for specific setup instructions.#
 
+## 🚀 Quick Start
+
+### Prerequisites
+
+- **Python 3.11+**
+- **LLM Provider** (choose one):
+  - 🦙 [Ollama](https://ollama.com/download) - Recommended for local development
+  - 🤖 OpenAI API key - For cloud deployment
+  - ⚡ Any other LLM provider
+- **OPA** - [Open Policy Agent](https://www.openpolicyagent.org/docs/latest/#running-opa)
+
+### Installation
+```bash
+# 1. Clone repository
+git clone https://github.com/SP-authonomy/ai-security-labs-handbook.git
+cd ai-security-labs-handbook
+
+# 2. Create virtual environment
+python3.11 -m venv .venv
+source .venv/bin/activate  # Windows: .venv\Scripts\activate
+
+# 3. Install dependencies
+pip install -r requirements.txt
+
+# 4. Configure environment
+cp .env.example .env
+
 ## 🎓 What You'll Learn
 **Security Fundamentals (Lab01)**
 
