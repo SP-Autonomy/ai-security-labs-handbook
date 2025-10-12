@@ -1,19 +1,45 @@
 <div align="center">
-    # AI Security Labs Handbook 🛡️
 
-A comprehensive hands-on laboratory series demonstrating production-grade AI security patterns across different AI architectures: simple LLMs, RAG systems, and agentic AI.
+# 🛡️ AI Security Labs Handbook
 
-![License](https://img.shields.io/badge/license-MIT-blue.svg)
-![Python](https://img.shields.io/badge/python-3.11-blue.svg)
-![Labs](https://img.shields.io/badge/labs-3-green.svg)
+**Production-Grade AI Security Patterns for LLM Applications**
+
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Python 3.11+](https://img.shields.io/badge/python-3.11+-blue.svg)](https://www.python.org/downloads/)
+[![FastAPI](https://img.shields.io/badge/FastAPI-0.110.0-009688.svg?style=flat&logo=FastAPI&logoColor=white)](https://fastapi.tiangolo.com)
+[![OPA](https://img.shields.io/badge/OPA-Policy-7B68EE.svg)](https://www.openpolicyagent.org/)
+
+**[🧪 Labs](#-laboratory-series) • [🚀 Quick Start](#-quick-start) • [📚 Learn](#-what-youll-learn) • [🤝 Contributing](#-contributing)**
+
+---
+
+### 🎯 **Hands-on laboratories demonstrating AI security across different architectures**
+
+**Simple LLMs • RAG Systems • Agentic AI**
+
 </div>
 
-## 🎯 Overview
+---
 
-This handbook provides **practical, runnable examples** of AI security implementations that work across different deployment models - whether you're using local open-source models (with Ollama), cloud APIs (OpenAI, Anthropic), or proprietary in-house models.
+## 📖 Overview
 
-### 🔑 Core Concept: Provider-Agnostic Security
-**Defense-in-Depth Architecture**: Multiple independent security layers that work regardless of your LLM provider.
+This handbook provides **practical, runnable examples** of AI security implementations that work across different deployment models - whether you're using **local open-source models** (Ollama), **cloud APIs** (OpenAI, Anthropic), or **proprietary in-house models**.
+
+### Why This Handbook?
+
+- ✅ **Learn by doing** - Real, working code you can run locally
+- ✅ **Provider-agnostic** - Security patterns work with any LLM
+- ✅ **Enterprise-ready** - Patterns used in production systems
+- ✅ **Comprehensive** - Covers LLMs, RAG, and Agentic AI
+- ✅ **Open source** - MIT licensed, free to use and modify
+
+---
+
+## 🔑 Core Concept: Provider-Agnostic Security
+
+Security layers operate **independently of your LLM provider**, making your security investment portable and future-proof.
+
+### Architecture Overview
 
 <table>
 <tr>
@@ -55,79 +81,89 @@ Ollama (Local) • OpenAI/Anthropic (Cloud) • Azure OpenAI (Enterprise) • Cu
 </tr>
 </table>
 
-**The key insight**: Security processors operate on requests/responses as data structures - they don't care where the LLM lives or how it's called. Only the thin provider layer changes.
+> **💡 Key Insight**: Security processors work with data structures, not API calls. Write security logic once, use everywhere.
+
+### Multi-Provider Support
+
+| Deployment Model | Example | Code Change Required | Security Processors |
+|-----------------|---------|---------------------|-------------------|
+| **🏠 Local/On-Prem** | Ollama, vLLM, TGI | Update `providers.py` (30 lines) | ✅ No change |
+| **☁️ Cloud API** | OpenAI, Anthropic, Cohere | Update `providers.py` (30 lines) | ✅ No change |
+| **🏢 Enterprise** | Azure OpenAI, AWS Bedrock | Update `providers.py` (30 lines) | ✅ No change |
+| **🔧 In-House** | Custom fine-tuned models | Update `providers.py` (30 lines) | ✅ No change |
+
+📖 **[Read Provider Integration Guide →](docs/PROVIDERS.md)**
+
+---
 
 ## 🧪 Laboratory Series
 
-### Lab 01: PII-Safe Summarizer ✅ Complete
-**Focus**: Simple LLM + Security Fundamentals
+<table>
+<tr>
+<td width="33%" align="center">
 
-A document summarization service with comprehensive security controls.
+### 🔐 Lab 01
+**PII-Safe Summarizer**
 
-**Security Features**:
-- Data Loss Prevention (PII masking)
-- Prompt injection detection
-- Role-based and Attribute-based access control (RBAC/ABAC)
-- Performance monitoring
+✅ **COMPLETE**
 
-**[👉 Go to Lab 01](labs/01-pii-safe-summarizer/README.md)**
+Foundation security patterns for LLM applications
 
-**Learn**: Foundation security patterns that apply to all AI systems
+**Features:**
+- PII Detection & Masking
+- Prompt Injection Guards
+- ABAC Policies
+- Performance Monitoring
 
----
+[**📖 Enter Lab 01 →**](labs/01-pii-safe-summarizer/)
 
-### Lab 02: Secure RAG Copilot 🚧 Coming Soon
-**Focus**: Retrieval-Augmented Generation + Context Security
-**Learn**: RAG-specific threats and how to mitigate them
+**Time:** 2-3 hours  
+**Difficulty:** 🟢 Beginner
 
----
+</td>
+<td width="33%" align="center">
 
-### Lab 03: Observability and Governance in Agentic AI 🚧 Coming Soon
-**Focus**: Agentic AI + Observability, Governance and Context
-**Learn**: Controlling autonomous AI systems safely without slowing adoption
+### 🔍 Lab 02
+**Secure RAG Copilot**
 
----
-See individual lab READMEs for specific setup instructions.#
+🚧 **COMING SOON**
 
-## 🚀 Quick Start
+RAG-specific security patterns
 
-### Prerequisites
+**Features:**
+- Context Injection Prevention
+- Retrieval Authorization
+- Citation Verification
+- Embedding Security
 
-- **Python 3.11+**
-- **LLM Provider** (choose one):
-  - 🦙 [Ollama](https://ollama.com/download) - Recommended for local development
-  - 🤖 OpenAI API key - For cloud deployment
-  - ⚡ Any other LLM provider
-- **OPA** - [Open Policy Agent](https://www.openpolicyagent.org/docs/latest/#running-opa)
+[**🔮 Preview Lab 02 →**](labs/02-secure-rag-copilot/)
 
-### Installation
-```bash
-# 1. Clone repository
-git clone https://github.com/SP-authonomy/ai-security-labs-handbook.git
-cd ai-security-labs-handbook
+**Time:** 3-4 hours  
+**Difficulty:** 🟡 Intermediate
 
-# 2. Create virtual environment
-python3.11 -m venv .venv
-source .venv/bin/activate  # Windows: .venv\Scripts\activate
+</td>
+<td width="33%" align="center">
 
-# 3. Install dependencies
-pip install -r requirements.txt
+### 🤖 Lab 03
+**Governed AI Agents**
 
-# 4. Configure environment
-cp .env.example .env
+🚧 **COMING SOON**
 
-## 🎓 What You'll Learn
-**Security Fundamentals (Lab01)**
+Autonomous system governance
 
-* Defense-in-depth architecture: Multiple independent security layers
-* Input validation & sanitization, output filtering: Handling sensitive vs non-sensitive data
-* Policy-based access control: Declarative access control with OPA/Rego
-* Audit trails & observability: Performance monitoring and audit trails
+**Features:**
+- Tool Authorization
+- Action Approval Workflows
+- Sandboxing & Limits
+- Decision Audit Trails
 
-## 📚 Further Reading
-* OWASP Top 10 for LLMs
-* NIST AI Risk Management Framework
-* Anthropic's Claude Safety Best Practices
+[**🔮 Preview Lab 03 →**](labs/03-governed-ai-agent/)
 
-## 🙏 Acknowledgments
-Built to demonstrate enterprise-grade AI security patterns for educational purposes.
+**Time:** 4-5 hours  
+**Difficulty:** 🔴 Advanced
+
+</td>
+</tr>
+</table>
+
+### 🗺️ Learning Path
