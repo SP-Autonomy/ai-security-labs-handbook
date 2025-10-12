@@ -49,7 +49,7 @@ Test Matrix
 
 ## Expected Results
 <details>
-<summary><b>❌ Test 1: BLOCKED - Malicious Contractor
+<summary><b>❌ Test 1: BLOCKED - Malicious Contractor</b></summary>
   <img width="1029" height="620" alt="Malicious Contractor Prompt" src="https://github.com/user-attachments/assets/5f6bb24d-76cc-4382-88bb-d431c1701db7" />
 </b></summary>
 <summary><b>✅ Test 2: SUCCESS - Benign Employee
