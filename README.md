@@ -176,7 +176,6 @@ Autonomous system governance
 
 > **💡 Recommended**: Complete labs in order. Each builds on concepts from the previous.
 
----
 ### Lab-Specific Learning
 
 | Lab | You'll Master |
