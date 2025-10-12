@@ -1,0 +1,4 @@
+Customer John Smith (SSN: 123-45-6789) requested a refund.
+His card ending in 4242424242424242 was charged twice.
+Contact: john@example.com
+Please summarize this case for our records.
