@@ -9,7 +9,7 @@
 [![FastAPI](https://img.shields.io/badge/FastAPI-0.110.0-009688.svg?style=flat&logo=FastAPI&logoColor=white)](https://fastapi.tiangolo.com)
 [![OPA](https://img.shields.io/badge/OPA-Policy-7B68EE.svg)](https://www.openpolicyagent.org/)
 
-**[🧪 Labs](#-laboratory-series) • [🚀 Quick Start](#-quick-start) • [📚 Learn](#lab-specific-learning)**
+**[🧪 Labs](#-laboratory-series) • [🚀 Quick Start](#-quick-start) • [📚 Learn](#learning-path)**
 
 ---
 
