@@ -167,3 +167,58 @@ Autonomous system governance
 </table>
 
 ### 🗺️ Learning Path
+📚 Start Here → Lab 01 (Fundamentals) → Lab 02 (RAG Security) → Lab 03 (Agents) → 🎓 Mastery
+↓
+Understand Gateway Pattern
+↓
+Apply to Your Use Case
+
+> **💡 Recommended**: Complete labs in order. Each builds on concepts from the previous.
+
+---
+
+## 🚀 Quick Start
+
+### Prerequisites
+
+- ✅ **Python 3.11+**
+- ✅ **LLM Provider** (choose one):
+  - 🦙 [Ollama](https://ollama.com/download) - Recommended for local development
+  - 🤖 OpenAI API key - For cloud deployment  
+  - ⚡ Any other LLM provider
+- ✅ **[OPA](https://www.openpolicyagent.org/docs/latest/#running-opa)** - Open Policy Agent
+
+### Installation
+```bash
+# 1. Clone repository
+git clone https://github.com/SP-authonomy/ai-security-labs-handbook.git
+cd ai-security-labs-handbook
+
+# 2. Create virtual environment
+python3.11 -m venv .venv
+source .venv/bin/activate  # Windows: .venv\Scripts\activate
+
+# 3. Install dependencies
+pip install -r requirements.txt
+
+# 4. Configure environment variables. E.g.
+MODEL_PROVIDER=ollama
+GEN_MODEL=llama3.2:1b
+OLLAMA_HOST=http://localhost:11434
+OPA_URL=http://localhost:8181/v1/data/ai/policy/allow
+```
+
+### Choose Your Lab
+Each lab has detailed setup instructions:
+
+🔐 Lab 01: PII-Safe Summarizer - Start here!
+🔍 Lab 02: Secure RAG Copilot - Coming soon
+🤖 Lab 03: Governed AI Agents - Coming soon
+
+### Lab-Specific Learning
+
+| Lab | You'll Master |
+|-----|--------------|
+| **Lab 01** | PII masking, injection detection, ABAC policies, performance monitoring |
+| **Lab 02** | Context security, retrieval auth, citation tracking, embedding safety |
+| **Lab 03** | Tool authorization, sandboxing, decision auditing, governance frameworks |
