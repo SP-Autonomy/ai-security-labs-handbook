@@ -63,55 +63,94 @@
 </details>
 
 ## 📊 Performance Analysis
-**Actual Test Results**
+
+### Actual Test Results
+
 Based on real measurements from the running system:
-Test 2: Complete Request Flow (Success)
-StageLatency (ms)% of TotalCumulativedlp_pre0.0<0.01%0.0msinjection_guard0.2<0.01%0.2mspolicy_gate12.40.08%12.6msllm_call16,253.899.91%16,266.4msdlp_post0.6<0.01%16,267.0msadd_provenance0.0<0.01%16,267.0msTOTAL16,267ms100%-
-Key Finding: Security overhead is only 13.2ms (0.08%) of total request time.
 
-## Performance Insights
-**Blocked requests never reach the LLM, saving:**
-⚡ 16+ seconds of processing time
-💰 API costs (if using cloud LLMs)
-🔒 Potential security breaches
+#### Test 2: Complete Request Flow (Success)
 
-## Cost-Benefit Analysis
-**Security Benefits**
-✅ Prevents data leaks - PII never reaches LLM
-✅ Blocks attacks - Injection attempts stopped in <1ms
-✅ Enforces policies - Authorization in ~13ms
-✅ Audit compliance - Every request tracked
+| Stage | Latency (ms) | % of Total | Cumulative |
+|-------|--------------|------------|------------|
+| **dlp_pre** | 0.0 | <0.01% | 0.0ms |
+| **injection_guard** | 0.2 | <0.01% | 0.2ms |
+| **policy_gate** | 12.4 | 0.08% | 12.6ms |
+| **llm_call** | 16,253.8 | 99.91% | 16,266.4ms |
+| **dlp_post** | 0.6 | <0.01% | 16,267.0ms |
+| **add_provenance** | 0.0 | <0.01% | 16,267.0ms |
+| **TOTAL** | **16,267ms** | **100%** | - |
 
+> **💡 Key Finding:** Security overhead is only **13.2ms (0.08%)** of total request time.
 
-##🎓 What You'll Learn
-**Technical Skills**
-✅ FastAPI Development - Async API design, file uploads, form data
-✅ Security Engineering - DLP, injection detection, access control
-✅ Policy as Code - Writing and testing OPA/Rego policies
-✅ LLM Integration - Provider abstraction, error handling
-✅ Observability - Performance monitoring, structured logging
+---
 
-**Security Concepts**
-🛡️ Defense-in-Depth - Multiple independent security layers
-🔒 Zero Trust - Explicit authorization for every request
-📊 Data Classification - Sensitive vs non-sensitive handling
-🎯 Principle of Least Privilege - Minimal access by default
-📝 Audit Trails - Compliance and incident response
+### Performance Insights
 
-**Architecture Patterns**
-🌐 Gateway Pattern - Centralized security enforcement
-🔗 Chain of Responsibility - Composable processors
-🔌 Provider Abstraction - Model-agnostic implementations
-📜 Policy Abstraction - Separating policy from code
+**Blocked requests never reach the LLM**, saving:
+- ⚡ **16+ seconds** of processing time
+- 💰 **API costs** (if using cloud LLMs)
+- 🔒 **Potential security breaches**
+
+---
+
+### Cost-Benefit Analysis
+
+#### Security Benefits
+
+- ✅ **Prevents data leaks** - PII never reaches LLM
+- ✅ **Blocks attacks** - Injection attempts stopped in <1ms
+- ✅ **Enforces policies** - Authorization in ~13ms
+- ✅ **Audit compliance** - Every request tracked
+
+#### Performance Cost
+
+| Without Security | With Security | Overhead |
+|-----------------|---------------|----------|
+| 16,254ms | 16,267ms | **+13ms (0.08%)** |
+
+**ROI:** Comprehensive security for **0.08% performance cost** is exceptional.
+
+---
+
+## 🎓 What You'll Learn
+
+### Technical Skills
+
+- ✅ **FastAPI Development** - Async API design, file uploads, form data
+- ✅ **Security Engineering** - DLP, injection detection, access control
+- ✅ **Policy as Code** - Writing and testing OPA/Rego policies
+- ✅ **LLM Integration** - Provider abstraction, error handling
+- ✅ **Observability** - Performance monitoring, structured logging
+
+### Security Concepts
+
+- 🛡️ **Defense-in-Depth** - Multiple independent security layers
+- 🔒 **Zero Trust** - Explicit authorization for every request
+- 📊 **Data Classification** - Sensitive vs non-sensitive handling
+- 🎯 **Principle of Least Privilege** - Minimal access by default
+- 📝 **Audit Trails** - Compliance and incident response
+
+### Architecture Patterns
+
+- 🌐 **Gateway Pattern** - Centralized security enforcement
+- 🔗 **Chain of Responsibility** - Composable processors
+- 🔌 **Provider Abstraction** - Model-agnostic implementations
+- 📜 **Policy Abstraction** - Separating policy from code
+
+---
 
 ## 🚀 Next Steps
-**Completed Lab 01? 🎉**
-You've mastered:
-✅ Core security patterns for LLM applications
-✅ Provider-agnostic architecture
-✅ Policy-based access control
-✅ Observability and audit trails
 
-** Continue Learning:**
-📖 Lab 02: Secure RAG Copilot - Learn RAG-specific security
-📖 Lab 03: Agentic AI Governance and Observability - Master agentic AI security
+### Completed Lab 01? 🎉
+
+**You've mastered:**
+- ✅ Core security patterns for LLM applications
+- ✅ Provider-agnostic architecture
+- ✅ Policy-based access control
+- ✅ Observability and audit trails
+
+### Continue Learning:
+
+1. **[📖 Lab 02: Secure RAG Copilot](../02-secure-rag-copilot/)** - Learn RAG-specific security
+2. **[📖 Lab 03: Agentic AI Governance and Observability](../03-governed-ai-agent/)** - Master agentic AI security
+---
