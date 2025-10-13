@@ -248,10 +248,10 @@ graph LR
     H --> I[Add Provenance]
     I --> J[Response]
     
-    style B fill:#fcbc32
+    style B fill:#918f03
     style C fill:#f71505
     style D fill:#f71505
-    style F fill:#fcbc32
+    style F fill:#02cfcb
     style H fill:#02cfcb
     style G fill:#f71505
 ```
