@@ -248,12 +248,12 @@ graph LR
     H --> I[Add Provenance]
     I --> J[Response]
     
-    style B fill:#f3e5f5
-    style C fill:#fff4e6
-    style D fill:#e1f5ff
-    style F fill:#e8f5e9
-    style H fill:#fce4ec
-    style G fill:#ffebee
+    style B fill:#fcbc32
+    style C fill:#f71505
+    style D fill:#f71505
+    style F fill:#fcbc32
+    style H fill:#02cfcb
+    style G fill:#f71505
 ```
 ### Security Layers
 
