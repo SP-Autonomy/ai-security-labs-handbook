@@ -198,6 +198,18 @@ Mapping of security controls to MITRE ATLAS adversarial tactics and techniques:
 
 ---
 
+### 📚 References
+
+- **MITRE ATLAS™**: [atlas.mitre.org](https://atlas.mitre.org/)
+- **OWASP Top 10 for LLMs**: [owasp.org/www-project-top-10-for-large-language-model-applications](https://owasp.org/www-project-top-10-for-large-language-model-applications/)
+- **NIST AI Risk Management Framework**: [nist.gov/itl/ai-risk-management-framework](https://www.nist.gov/itl/ai-risk-management-framework)
+- **ENISA Threat Landscape for AI**: [enisa.europa.eu](https://www.enisa.europa.eu/)
+
+
+> **💡 Professional Note**: This threat model follows industry best practices from organizations deploying production LLM systems, including OpenAI, Anthropic, Google DeepMind, and Fortune 500 enterprises. The layered defense approach aligns with **Zero Trust Architecture** principles and **NIST Cybersecurity Framework** guidelines.
+
+---
+
 ### 🎓 Security Assumptions & Threat Model Scope
 
 **In Scope:**
@@ -474,17 +486,3 @@ Based on real measurements from the running system:
 
 1. **[📖 Lab 02: Secure RAG Copilot](../02-secure-rag-copilot/)** - Learn RAG-specific security
 2. **[📖 Lab 03: Agentic AI Governance and Observability](../03-governed-ai-agent/)** - Master agentic AI security
----
-
-### 📚 References
-
-- **MITRE ATLAS™**: [atlas.mitre.org](https://atlas.mitre.org/)
-- **OWASP Top 10 for LLMs**: [owasp.org/www-project-top-10-for-large-language-model-applications](https://owasp.org/www-project-top-10-for-large-language-model-applications/)
-- **NIST AI Risk Management Framework**: [nist.gov/itl/ai-risk-management-framework](https://www.nist.gov/itl/ai-risk-management-framework)
-- **ENISA Threat Landscape for AI**: [enisa.europa.eu](https://www.enisa.europa.eu/)
-
----
-
-> **💡 Professional Note**: This threat model follows industry best practices from organizations deploying production LLM systems, including OpenAI, Anthropic, Google DeepMind, and Fortune 500 enterprises. The layered defense approach aligns with **Zero Trust Architecture** principles and **NIST Cybersecurity Framework** guidelines.
-
----
