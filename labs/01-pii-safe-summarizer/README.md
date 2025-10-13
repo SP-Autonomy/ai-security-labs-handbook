@@ -250,8 +250,8 @@ graph LR
     
     style A fill:#2d2d2d,stroke:#666,stroke-width:2px,color:#fff
     style B fill:#918f03,stroke:#666,stroke-width:2px,color:#000
-    style C fill:#2d2d2d,stroke:#666,stroke-width:2px,color:#fff
-    style D fill:#2d2d2d,stroke:#666,stroke-width:2px,color:#fff
+    style C fill:#918f03,stroke:#666,stroke-width:2px,color:#000
+    style D fill:#918f03,stroke:#666,stroke-width:2px,color:#000
     style E fill:#1a1a1a,stroke:#666,stroke-width:2px,color:#fff
     style F fill:#2d2d2d,stroke:#666,stroke-width:2px,color:#fff
     style G fill:#8b0000,stroke:#666,stroke-width:2px,color:#fff
