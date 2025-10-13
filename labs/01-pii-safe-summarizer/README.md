@@ -248,12 +248,16 @@ graph LR
     H --> I[Add Provenance]
     I --> J[Response]
     
-    style B fill:#918f03
-    style C fill:#f71505
-    style D fill:#f71505
-    style F fill:#02cfcb
-    style H fill:#02cfcb
-    style G fill:#f71505
+    style A fill:#2d2d2d,stroke:#666,stroke-width:2px,color:#fff
+    style B fill:#918f03,stroke:#666,stroke-width:2px,color:#000
+    style C fill:#2d2d2d,stroke:#666,stroke-width:2px,color:#fff
+    style D fill:#2d2d2d,stroke:#666,stroke-width:2px,color:#fff
+    style E fill:#1a1a1a,stroke:#666,stroke-width:2px,color:#fff
+    style F fill:#2d2d2d,stroke:#666,stroke-width:2px,color:#fff
+    style G fill:#8b0000,stroke:#666,stroke-width:2px,color:#fff
+    style H fill:#918f03,stroke:#666,stroke-width:2px,color:#000
+    style I fill:#2d2d2d,stroke:#666,stroke-width:2px,color:#fff
+    style J fill:#2d2d2d,stroke:#666,stroke-width:2px,color:#fff
 ```
 ### Security Layers
 
