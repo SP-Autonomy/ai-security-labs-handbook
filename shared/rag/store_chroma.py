@@ -89,7 +89,7 @@ def add_docs_from_folder(folder: str, validate: bool = True) -> int:
             if not is_valid:
                 rejected.append((p, reason))
                 print(f"⚠️  Rejected: {p} ({reason})")
-                continue
+                continue  # Skip this document
         
         did = str(uuid.uuid4())
         ids.append(did)

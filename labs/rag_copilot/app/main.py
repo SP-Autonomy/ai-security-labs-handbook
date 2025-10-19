@@ -1,3 +1,8 @@
+from dotenv import load_dotenv
+load_dotenv()
+
+import os
+from contextlib import asynccontextmanager
 from fastapi import FastAPI
 from pydantic import BaseModel
 from typing import List
@@ -9,19 +14,41 @@ from shared.processors.policy_opa import policy_gate
 from shared.processors.provenance import add_provenance
 from shared.rag.store_chroma import reset_collection, add_docs_from_folder, query
 from labs.rag_copilot.security.sanitize import sanitize
-from dotenv import load_dotenv
-load_dotenv()
 
-app = FastAPI(title="RAG Copilot (Lab 02)")
-
-# ---- Initialize collection on startup (small corpus) ----
+# Configuration
 CORPUS_DIR = "labs/rag_copilot/data/corpus"
+REDTEAM_DIR = "labs/rag_copilot/redteam/ipi_pages"
+TEST_MODE = os.getenv("RAG_TEST_MODE", "false").lower() == "true"
 
-@app.on_event("startup")
-def _startup():
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    """
+    Lifespan context manager for startup and shutdown events.
+    Replaces deprecated @app.on_event("startup")
+    """
+    # Startup: Ingest documents
     reset_collection()
-    added = add_docs_from_folder(CORPUS_DIR)
-    print(f"[Lab02] Ingested {added} docs from {CORPUS_DIR}")
+    
+    # Ingest trusted corpus (with validation)
+    added = add_docs_from_folder(CORPUS_DIR, validate=True)
+    print(f"[Lab02] Ingested {added} trusted docs from {CORPUS_DIR}")
+    
+    # In test mode, ingest red team docs WITHOUT validation
+    if TEST_MODE:
+        print(f"[Lab02] 🔴 TEST MODE ACTIVE: Including red team documents")
+        redteam_added = add_docs_from_folder(REDTEAM_DIR, validate=False)
+        print(f"[Lab02] 🔴 TEST MODE: Ingested {redteam_added} red team docs (unvalidated)")
+        print(f"[Lab02] Total: {added + redteam_added} docs")
+    else:
+        print(f"[Lab02] Production mode: Red team docs excluded")
+    
+    yield  # Application runs here
+    
+    # Shutdown: Cleanup if needed
+    print("[Lab02] Shutting down...")
+
+# Initialize FastAPI with lifespan
+app = FastAPI(title="RAG Copilot (Lab 02)", lifespan=lifespan)
 
 class AskBody(BaseModel):
     question: str
@@ -47,16 +74,42 @@ chain = Chain(pre=[dlp_pre, injection_guard, policy_gate],
 
 @app.post("/ask")
 def ask(body: AskBody):
-    # Retrieve
-    hits = query(body.question, k=5)
-    # Sanitize retrieved text to reduce indirect injection risk
-    for h in hits:
-        h["text"] = sanitize(h["text"])
-    # Build request; we pass retrieved context into req["context"] so the injection guard can scan it
+    # Retrieve documents
+    hits = query(body.question, k=3)
+    
+    # Build request with UNSANITIZED context for security checks
     req = {
         "prompt": body.question,
         "user": {"role": body.user_role},
-        "context": "\n\n".join([h["text"] for h in hits]),
+        "context": "\n\n".join([h["text"] for h in hits]),  # ← RAW content
         "chunks": hits,
     }
-    return chain.run(req)
+    
+    # Run security checks on raw content
+    req = dlp_pre(req)
+    if req.get("blocked"):
+        return req
+    
+    req = injection_guard(req)
+    if req.get("blocked"):
+        return req
+    
+    req = policy_gate(req)
+    if req.get("blocked"):
+        return req
+    
+    # NOW sanitize before LLM call
+    for h in hits:
+        h["text"] = sanitize(h["text"])
+    req["context"] = "\n\n".join([h["text"] for h in hits])
+    req["chunks"] = hits
+    
+    # Call LLM with sanitized content
+    result = llm_call(req)
+    req.update(result)
+    
+    # Post-processing
+    req = dlp_post(req)
+    req = add_provenance(req)
+    
+    return req

@@ -126,15 +126,18 @@ Foundation security patterns for LLM applications
 ### 🔍 Lab 02
 **Secure RAG Copilot**
 
-🚧 **COMING SOON**
+✅ **COMPLETE**
 
 RAG-specific security patterns
 
 **Features:**
-- Context Injection Prevention
-- Retrieval Authorization
+- Indirect Prompt Injection Defense
+- Content Validation (Pre-Ingestion)
+- Context Sanitization
 - Citation Verification
 - Embedding Security
+- Semantic Relevance Monitoring
+- DLP + Policy Gate + Provenance
 
 [**🔮 Preview Lab 02 →**](labs/02-secure-rag-copilot/)
 
