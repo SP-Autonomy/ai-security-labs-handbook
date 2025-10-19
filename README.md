@@ -170,7 +170,7 @@ Autonomous system governance
 |------|--------|
 | 1️⃣ | 📚 Start Here → Lab 01 (Fundamentals) |
 | 2️⃣ | ↓ Lab 02 (RAG Security) |
-| 3️⃣ | ↓ Lab 03 (Agentic AI) |
+| 3️⃣ | ↓ Lab 03 (Governed Agentic AI) |
 
 > **💡 Recommended**: Complete labs in order. Each builds on concepts from the previous.
 
