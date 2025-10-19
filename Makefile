@@ -31,11 +31,6 @@ test-all:
 run-rag:
 	uvicorn labs.rag_copilot.app.main:app --reload --port 8001
 
-
-	curl -s -X POST htttest-rag-benign:p://localhost:8001/ask \
-	  -H "Content-Type: application/json" \
-	  -d '{"question":"What are the supported security features in our demo docs?","user_role":"employee"}' | python -m json.tool
-
 test-rag:
 	curl -s -X POST http://localhost:8001/ask \
 	  -H "Content-Type: application/json" \
