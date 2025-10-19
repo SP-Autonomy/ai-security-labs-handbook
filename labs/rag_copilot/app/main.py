@@ -8,14 +8,14 @@ from shared.processors.dlp import dlp_pre, dlp_post
 from shared.processors.policy_opa import policy_gate
 from shared.processors.provenance import add_provenance
 from shared.rag.store_chroma import reset_collection, add_docs_from_folder, query
-from labs.lab02_rag_copilot.security.sanitize import sanitize
+from labs.rag_copilot.security.sanitize import sanitize
 from dotenv import load_dotenv
 load_dotenv()
 
 app = FastAPI(title="RAG Copilot (Lab 02)")
 
 # ---- Initialize collection on startup (small corpus) ----
-CORPUS_DIR = "labs/lab02_rag_copilot/data/corpus"
+CORPUS_DIR = "labs/rag_copilot/data/corpus"
 
 @app.on_event("startup")
 def _startup():
