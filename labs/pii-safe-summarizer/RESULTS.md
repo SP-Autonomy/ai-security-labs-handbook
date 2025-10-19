@@ -42,7 +42,7 @@ Validation against MITRE ATLAS threat taxonomy:
 ### Test Environment
 ```yaml
 Environment:
-  Platform: Ubuntu 22.04 (WSL2)
+  Platform: Ubuntu 22.04+ (WSL2)
   Python: 3.11
   LLM Provider: Ollama
   Model: llama3.2:1b
@@ -550,7 +550,7 @@ Each test evaluated against:
 
 <div align="center">
 
-**Test Report Generated**: January 2025  
+**Test Report Generated**: October 2025  
 **Framework**: MITRE ATLAS + OWASP LLM Top 10  
 **Testing Tool**: Custom FastAPI + OPA Stack
 

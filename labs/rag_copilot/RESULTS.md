@@ -371,7 +371,7 @@ make test-rag-indirect-injection
 ## 🔗 References
 
 - [Lab 02 README](README.md) - Setup and architecture
-- [Lab 01 RESULTS](../01-pii-safe-summarizer/RESULTS.md) - Foundation validation
+- [Lab 01 RESULTS](../pii-safe-summarizer/RESULTS.md) - Foundation validation
 - [OWASP LLM Top 10](https://owasp.org/www-project-top-10-for-large-language-model-applications/)
 - [MITRE ATLAS](https://atlas.mitre.org/)
 
@@ -379,7 +379,7 @@ make test-rag-indirect-injection
 
 <div align="center">
 
-**Test Report Generated:** January 2025  
+**Test Report Generated:** October 2025  
 **Framework:** OWASP LLM Top 10 + RAG-Specific Threats  
 **Platform:** ChromaDB + Ollama + OPA
 

@@ -381,14 +381,14 @@ grep "lifespan" labs/rag_copilot/app/main.py
 **Validate:** 📊 **[View Test Results →](RESULTS.md)**
 
 **Continue:** 
-1. **[Lab 03: Governed AI Agents](../03-governed-ai-agent/)** - Agentic AI security (Coming Soon)
-2. **[Lab 01: PII Summarizer](../01-pii-safe-summarizer/)** - Review foundations
+1. **[Lab 03: Governed Agentic AI](../governed-agentic-ai/)** - Agentic AI security (Coming Soon)
+2. **[Lab 01: PII Summarizer](../pii-safe-summarizer/)** - Review foundations
 
 ---
 
 <div align="center">
 
-**[⬅️ Lab 01](../01-pii-safe-summarizer/)** • **[📊 Test Results](RESULTS.md)** • **[⬆️ Handbook](../../README.md)**
+**[⬅️ Lab 01](../pii-safe-summarizer/)** • **[📊 Test Results](RESULTS.md)** • **[⬆️ Handbook](../../README.md)**
 
 ---
 

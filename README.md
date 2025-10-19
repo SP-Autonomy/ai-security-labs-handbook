@@ -9,7 +9,7 @@
 [![FastAPI](https://img.shields.io/badge/FastAPI-0.110.0-009688.svg?style=flat&logo=FastAPI&logoColor=white)](https://fastapi.tiangolo.com)
 [![OPA](https://img.shields.io/badge/OPA-Policy-7B68EE.svg)](https://www.openpolicyagent.org/)
 
-**[🧪 Labs](#-laboratory-series) • [🚀 Quick Start](#-quick-start) • [📚 Learn](#learning-path)**
+**[🧪 Labs](#-laboratory-series) • [🚀 Quick Start](#-quick-start) • [📚 Learn](#-learning-path)**
 
 ---
 
@@ -91,8 +91,6 @@ Ollama (Local) • OpenAI/Anthropic (Cloud) • Azure OpenAI (Enterprise) • Cu
 | **☁️ Cloud API** | OpenAI, Anthropic, Cohere | Update `providers.py` (30 lines) | ✅ No change |
 | **🏢 Enterprise** | Azure OpenAI, AWS Bedrock | Update `providers.py` (30 lines) | ✅ No change |
 | **🔧 In-House** | Custom fine-tuned models | Update `providers.py` (30 lines) | ✅ No change |
-
-📖 **[Read Provider Integration Guide →](docs/PROVIDERS.md)**
 
 ---
 

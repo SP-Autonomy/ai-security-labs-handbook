@@ -672,13 +672,13 @@ make run-api
 
 ### Continue Learning
 
-1. **[📖 Lab 02: Secure RAG Copilot](../02-secure-rag-copilot/)** - RAG-specific security patterns
-2. **[📖 Lab 03: Governed AI Agents](../03-governed-agentic-ai/)** - Agentic AI 
+1. **[📖 Lab 02: Secure RAG Copilot](../rag_copilot/)** - RAG-specific security patterns
+2. **[📖 Lab 03: Governed AI Agents](../03-governed-agentic-ai/)** - Agentic AI Governance and Observatibility
 ---
 
 <div align="center">
 
-**[⬅️ Back to Handbook](../../README.md)** • **[📊 View Test Results](RESULTS.md)** • **[➡️ Next: Lab 02](../02-secure-rag-copilot/)**
+**[⬅️ Back to Handbook](../../README.md)** • **[📊 View Test Results](RESULTS.md)** • **[➡️ Next: Lab 02](../rag_copilot/)**
 
 ---
 
