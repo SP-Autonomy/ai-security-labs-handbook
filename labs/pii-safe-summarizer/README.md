@@ -8,12 +8,7 @@
 [![Difficulty](https://img.shields.io/badge/difficulty-beginner-green.svg)](.)
 [![Time](https://img.shields.io/badge/time-2--3%20hours-blue.svg)](.)
 
-[🎯 Overview](#-overview) • [🏗️ Architecture](#-architecture) • [🚀 Setup](#-setup) • [🧪 Tests](#-test-scenarios) • [📊 Performance](#-performance-analysis) • [🎓 Learn](#-what-youll-learn)
-
-[🏗️ Architecture](#-architecture)
-[🏗️ Architecture](#architecture)
-[🏗️ Architecture](#%EF%B8%8F-architecture)
-[🏗️ Architecture](#🏗️-architecture)
+[🎯 Overview](#-overview) • [🏢 Architecture](#-architecture) • [🚀 Setup](#-setup) • [🧪 Tests](#-test-scenarios) • [📊 Performance](#-performance-analysis) • [🎓 Learn](#-what-youll-learn)
 
 </div>
 
@@ -199,7 +194,7 @@ Mapping of security controls to MITRE ATLAS adversarial tactics and techniques:
 
 ---
 
-## 🏗️ Architecture
+## 🏢 Architecture
 
 ### Security Processing Chain
 ```mermaid
