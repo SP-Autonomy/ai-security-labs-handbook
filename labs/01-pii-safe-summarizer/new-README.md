@@ -211,8 +211,8 @@ graph LR
     
     style A fill:#2d2d2d,stroke:#666,stroke-width:2px,color:#fff
     style B fill:#918f03,stroke:#666,stroke-width:2px,color:#000
-    style C fill:#2d2d2d,stroke:#666,stroke-width:2px,color:#fff
-    style D fill:#2d2d2d,stroke:#666,stroke-width:2px,color:#fff
+    style C fill:#918f03,stroke:#666,stroke-width:2px,color:#000
+    style D fill:#918f03,stroke:#666,stroke-width:2px,color:#000
     style E fill:#1a1a1a,stroke:#666,stroke-width:2px,color:#fff
     style F fill:#2d2d2d,stroke:#666,stroke-width:2px,color:#fff
     style G fill:#8b0000,stroke:#666,stroke-width:2px,color:#fff
@@ -673,16 +673,7 @@ make run-api
 ### Continue Learning
 
 1. **[📖 Lab 02: Secure RAG Copilot](../02-secure-rag-copilot/)** - RAG-specific security patterns
-2. **[📖 Lab 03: Governed AI Agents](../03-governed-ai-agent/)** - Agentic AI governance
-3. **[📖 Architecture Deep Dive](../../docs/ARCHITECTURE.md)** - Design patterns explained
-4. **[📖 Provider Integration Guide](../../docs/PROVIDERS.md)** - Add your own LLM
-
----
-
-## 🤝 Contributing
-
-Found a bug or have suggestions? [Open an issue](https://github.com/SP-authonomy/ai-security-labs-handbook/issues)
-
+2. **[📖 Lab 03: Governed AI Agents](../03-governed-agentic-ai/)** - Agentic AI 
 ---
 
 <div align="center">
