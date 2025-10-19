@@ -4,7 +4,7 @@
 
 **Empirical Validation of Security Controls**
 
-Test Date: January 2025 | Framework: MITRE ATLAS | Tool: FastAPI + OPA
+Test Date: October 2025 | Framework: MITRE ATLAS | Tool: FastAPI + OPA
 
 ---
 
