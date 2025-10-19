@@ -24,4 +24,4 @@ ENV/
 Thumbs.db
 
 # Test outputs
-*.log
+*.logchroma_data/

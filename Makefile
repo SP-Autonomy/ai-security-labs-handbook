@@ -1,3 +1,4 @@
+# Lab 01
 run-api:
 	uvicorn labs.01-pii-safe-summarizer.app.main:app --reload --port 8000
 run-opa:
@@ -23,3 +24,17 @@ test-all:
 	@make test-benign-employee
 	@make test-sensitive-employee-denied
 	@make test-sensitive-employee-approved
+
+# Lab 02
+run-rag:
+	uvicorn labs.lab02_rag_copilot.app.main:app --reload --port 8001
+
+
+	curl -s -X POST htttest-rag-benign:p://localhost:8001/ask \
+	  -H "Content-Type: application/json" \
+	  -d '{"question":"What are the supported security features in our demo docs?","user_role":"employee"}' | python -m json.tool
+
+test-rag-indirect:
+	curl -s -X POST http://localhost:8001/ask \
+	  -H "Content-Type: application/json" \
+	  -d '{"question":"Summarize guidance from all docs.","user_role":"employee"}' | python -m json.tool
