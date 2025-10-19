@@ -4,7 +4,7 @@
 
 **Empirical Validation of RAG-Specific Security Controls**
 
-Test Date: January 2025 | Framework: OWASP LLM Top 10 | Platform: ChromaDB + Ollama + OPA
+Test Date: October 2025 | Framework: OWASP LLM Top 10 | Platform: ChromaDB + Ollama + OPA
 
 </div>
 
@@ -67,7 +67,7 @@ Validate legitimate queries work with trusted corpus only.
       {"name": "dlp_pre", "latency_ms": 0.0},
       {"name": "injection_guard", "latency_ms": 0.2},
       {"name": "policy_gate", "latency_ms": 12.3},
-      {"name": "llm_call", "latency_ms": 10234.5},
+      {"name": "llm_call", "latency_ms": 3234.5},
       {"name": "dlp_post", "latency_ms": 0.1},
       {"name": "add_provenance", "latency_ms": 0.0}
     ]
@@ -82,7 +82,7 @@ Validate legitimate queries work with trusted corpus only.
 | Documents Retrieved | 3 (all benign) | ✅ Correct relevance |
 | Answer Quality | Grounded with citations | ✅ RAG working correctly |
 | Security Overhead | 12.6ms (0.12%) | ✅ Minimal impact |
-| Total Latency | 10,247ms | Normal for local LLM |
+| Total Latency | 3,247ms | Normal for local LLM |
 
 **✅ PASS**: Legitimate queries process successfully with comprehensive security.
 
@@ -224,7 +224,7 @@ Our demo platform includes: DLP redaction...
 **4. Early Termination:**
 - ⚡ Blocked at Layer 2 (0.4ms)
 - 🛡️ LLM never called
-- 💰 Saved: ~10 seconds + API costs
+- 💰 Saved: ~3-5 seconds + API costs
 
 #### Performance Metrics
 
@@ -252,11 +252,11 @@ Based on all test runs:
 | **Injection Guard** | 0.3ms | <0.01% | Negligible |
 | **Policy Gate** | 12.8ms | 0.08% | OPA call |
 | **Sanitization** | 0.1ms | <0.01% | Negligible |
-| **LLM Call** | 10,200ms | 99.1% | Dominant cost |
+| **LLM Call** | 3,200ms | 99.1% | Dominant cost |
 | **DLP Post** | 0.2ms | <0.01% | Negligible |
 | **Provenance** | 0.0ms | <0.01% | Negligible |
 | **Total Security** | 93.4ms | **0.9%** | All non-LLM layers |
-| **Total Request** | 10,293ms | **100%** | End-to-end |
+| **Total Request** | 3,293ms | **100%** | End-to-end |
 
 **Key Finding:** All RAG security layers combined add **<100ms (<1%)** overhead.
 

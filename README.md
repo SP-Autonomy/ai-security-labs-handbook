@@ -112,10 +112,10 @@ Foundation security patterns for LLM applications
 **Features:**
 - PII Detection & Masking
 - Prompt Injection Guards
-- ABAC Policies
+- RBAC/ABAC Policies
 - Performance Monitoring
 
-[**📖 Enter Lab 01 →**](labs/01-pii-safe-summarizer/)
+[**📖 Enter Lab 01 →**](labs/pii-safe-summarizer/)
 
 **Time:** 2-3 hours  
 **Difficulty:** 🟢 Beginner
@@ -132,14 +132,11 @@ RAG-specific security patterns
 
 **Features:**
 - Indirect Prompt Injection Defense
-- Content Validation (Pre-Ingestion)
-- Context Sanitization
-- Citation Verification
+- Content Validation (Pre-Ingestion) and Sanitization
 - Embedding Security
-- Semantic Relevance Monitoring
 - DLP + Policy Gate + Provenance
 
-[**🔮 Preview Lab 02 →**](labs/02-secure-rag-copilot/)
+[**🔮 Preview Lab 02 →**](labs/rag_copilot/)
 
 **Time:** 3-4 hours  
 **Difficulty:** 🟡 Intermediate
@@ -148,7 +145,7 @@ RAG-specific security patterns
 <td width="33%" align="center">
 
 ### 🤖 Lab 03
-**Governed AI Agents**
+**Governed Agentic AI**
 
 🚧 **COMING SOON**
 
@@ -160,7 +157,7 @@ Autonomous system governance
 - Sandboxing & Limits
 - Decision Audit Trails
 
-[**🔮 Preview Lab 03 →**](labs/03-governed-ai-agent/)
+[**🔮 Preview Lab 03 →**](labs/governed-agentic-ai/)
 
 **Time:** 4-5 hours  
 **Difficulty:** 🔴 Advanced
@@ -175,7 +172,7 @@ Autonomous system governance
 |------|--------|
 | 1️⃣ | 📚 Start Here → Lab 01 (Fundamentals) |
 | 2️⃣ | ↓ Lab 02 (RAG Security) |
-| 3️⃣ | ↓ Lab 03 (Agents) |
+| 3️⃣ | ↓ Lab 03 (Agentic AI) |
 
 > **💡 Recommended**: Complete labs in order. Each builds on concepts from the previous.
 

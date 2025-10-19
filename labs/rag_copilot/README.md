@@ -107,7 +107,7 @@ graph LR
 
 ### Prerequisites
 
-- ✅ Completed [Lab 01](../01-pii-safe-summarizer/)
+- ✅ Completed [Lab 01](../pii-safe-summarizer/)
 - ✅ Python 3.11+ with virtual environment
 - ✅ Ollama with `llama3.2:1b` and `nomic-embed-text` models
 - ✅ OPA running on port 8181
@@ -281,7 +281,7 @@ Typical request flow (production mode, successful query):
 |-------|---------|-----------|-------|
 | Vector Search | ~80ms | 0.5% | ChromaDB query |
 | Security Layers | ~13ms | 0.08% | DLP + Guard + Policy |
-| LLM Call | ~10-15s | 99.4% | Ollama generation |
+| LLM Call | ~3-5s | 99.4% | Ollama generation |
 | **Total** | **~10-15s** | **100%** | |
 
 **Key Findings:**
