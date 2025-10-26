@@ -207,9 +207,5 @@ source .venv/bin/activate  # Windows: .venv\Scripts\activate
 # 3. Install dependencies
 pip install -r requirements.txt
 
-# 4. Configure environment variables. E.g.
-MODEL_PROVIDER=ollama
-GEN_MODEL=llama3.2:1b
-OLLAMA_HOST=http://localhost:11434
-OPA_URL=http://localhost:8181/v1/data/ai/policy/allow
+# 4. Configure environment variables. Check "Configuration" section under each lab.
 ```
