@@ -8,7 +8,7 @@
 [![Difficulty](https://img.shields.io/badge/difficulty-advanced-red.svg)](.)
 [![Time](https://img.shields.io/badge/time-3--4%20hours-blue.svg)](.)
 
-[🎯 Overview](#overview) • [🏗️ Architecture](#architecture) • [🚀 Setup](#setup) • [🧪 Tests](#test-scenarios) • [📊 Results](RESULTS.md)
+[🎯 Overview](#overview) • [🏢 Architecture](#architecture) • [🚀 Setup](#setup) • [🧪 Tests](#test-scenarios) • [📊 Results](RESULTS.md)
 
 </div>
 
