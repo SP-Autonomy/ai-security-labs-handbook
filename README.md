@@ -145,7 +145,7 @@ RAG-specific security patterns
 ### 🤖 Lab 03
 **Governed Agentic AI**
 
-🚧 **COMING SOON**
+✅ **COMPLETE**
 
 Autonomous system governance
 
@@ -153,7 +153,7 @@ Autonomous system governance
 - Tool Authorization
 - Action Approval Workflows
 - Sandboxing & Limits
-- Decision Audit Trails
+- Decision Audit + Logging Trails
 
 [**🔮 Preview Lab 03 →**](labs/governed-agentic-ai/)
 
