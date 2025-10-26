@@ -32,3 +32,9 @@ chroma_data/
 
 # OPA
 opa_data/
+
+# Evidence (Lab03) 
+evidence/
+
+# Results (Lab03) 
+labs/governed_agentic_ai/sandbox_outputs/

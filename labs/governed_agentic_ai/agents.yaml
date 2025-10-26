@@ -1,0 +1,44 @@
+# Agent-to-Agent (A2A) catalog with tool allowlists
+agents:
+  - id: researcher
+    name: "Research Agent"
+    description: "Searches documents and summarizes findings"
+    allowed_tools:
+      - search_docs
+      - summarize_findings
+    max_tool_calls: 15
+    max_runtime_seconds: 120
+    
+  - id: analyst
+    name: "Analysis Agent"
+    description: "Checks policies and generates reports"
+    allowed_tools:
+      - check_policy
+      - generate_report
+    max_tool_calls: 10
+    max_runtime_seconds: 90
+    
+  - id: writer
+    name: "Writer Agent"
+    description: "Writes final outputs to files"
+    allowed_tools:
+      - write_to_file
+      - read_file
+      - list_files
+    max_tool_calls: 5
+    max_runtime_seconds: 60
+    
+  - id: admin_agent
+    name: "Admin Agent (Unrestricted)"
+    description: "Full access - USE WITH CAUTION"
+    allowed_tools:
+      - search_docs
+      - summarize_findings
+      - check_policy
+      - generate_report
+      - write_to_file
+      - read_file
+      - list_files
+      - send_email  # DANGEROUS!
+    max_tool_calls: 50
+    max_runtime_seconds: 300

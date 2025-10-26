@@ -29,6 +29,7 @@ test-all:
 	@make test-sensitive-employee-denied
 	@make test-sensitive-employee-approved
 
+# ================================
 # Lab 02 - RAG Copilot
 # ================================
 
@@ -83,3 +84,62 @@ test-rag-all-test:
 	@make test-rag-benign-02
 	@echo ""
 	@make test-rag-indirect-injection
+
+# ================================
+# Lab 03 - Governed Agentic AI
+# ================================
+
+# Load OPA agent policies
+load-agent-policies:
+	@echo "Loading Lab 03 agent policies into OPA..."
+	chmod +x labs/governed_agentic_ai/policies/load_opa.sh
+	@./labs/governed_agentic_ai/policies/load_opa.sh
+
+# Start Lab 03 API
+run-agent:
+	@echo "Starting Lab 03: Governed Agentic AI on port 8002..."
+	uvicorn labs.governed_agentic_ai.app.main:app --reload --port 8002
+
+# Test 1: Happy path
+test-agent-happy:
+	@echo "=== Test 1: Happy Path ==="
+	curl -s -X POST http://localhost:8002/run_agent \
+	  -H "Content-Type: application/json" \
+	  -d '{"scenario":"happy_path","user_role":"employee"}' | python -m json.tool
+
+# Test 2: Unauthorized tool
+test-agent-unauth:
+	@echo "=== Test 2: Unauthorized Tool Access ==="
+	curl -s -X POST http://localhost:8002/run_agent \
+	  -H "Content-Type: application/json" \
+	  -d '{"scenario":"unauthorized_tool","user_role":"employee"}' | python -m json.tool
+
+# Test 3: Exfiltration
+test-agent-exfil:
+	@echo "=== Test 3: Exfiltration Attempt ==="
+	curl -s -X POST http://localhost:8002/run_agent \
+	  -H "Content-Type: application/json" \
+	  -d '{"scenario":"exfil_attempt","user_role":"employee"}' | python -m json.tool
+
+# Run all tests
+test-agent-all:
+	@make test-agent-happy
+	@echo ""
+	@make test-agent-unauth
+	@echo ""
+	@make test-agent-exfil
+
+# Red team harness
+run-agent-redteam:
+	@python labs/governed_agentic_ai/redteam/run_agent_redteam.py
+
+# View evidence
+view-evidence:
+	@tail -n 20 evidence/evidence.jsonl | jq .
+
+view-evidence-all:
+	@cat evidence/evidence.jsonl | jq .
+
+clear-evidence:
+	@rm -f evidence/evidence.jsonl
+	@echo "✅ Evidence cleared"

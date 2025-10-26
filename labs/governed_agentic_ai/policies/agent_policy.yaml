@@ -1,0 +1,49 @@
+# Human-readable policy mapping (source-of-truth for documentation)
+# OPA enforces the actual rules via agent_tools.rego
+
+agents:
+  researcher:
+    description: "Research agent - read-only access"
+    allowed_tools:
+      - search_docs
+      - summarize_findings
+    restrictions:
+      - "No write operations"
+      - "No side-effect tools"
+    
+  analyst:
+    description: "Analysis agent - policy checking and reporting"
+    allowed_tools:
+      - check_policy
+      - generate_report
+    restrictions:
+      - "No file operations"
+      - "No side-effect tools"
+    
+  writer:
+    description: "Writer agent - file operations"
+    allowed_tools:
+      - write_to_file
+      - read_file
+      - list_files
+    restrictions:
+      - "Sandbox-only file access"
+      - "No network operations"
+    
+  admin_agent:
+    description: "Admin agent - UNRESTRICTED ACCESS"
+    allowed_tools:
+      - ALL
+    restrictions:
+      - "⚠️ USE WITH EXTREME CAUTION"
+      - "Can access side-effect tools"
+
+side_effect_tools:
+  - send_email
+  - delete_file
+  - make_http_request
+
+monitoring:
+  log_all_calls: true
+  alert_on_unauthorized_attempts: true
+  evidence_retention_days: 90
