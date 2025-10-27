@@ -33,8 +33,8 @@ class ContextAnalyzer:
             "/root/": 50,
             
             # Code injection indicators
-            "eval\(": 50,
-            "exec\(": 50,
+            r"eval\(": 50,
+            r"exec\(": 50,
             "__import__": 45,
             
             # Credential patterns
