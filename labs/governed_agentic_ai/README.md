@@ -625,24 +625,6 @@ curl http://localhost:11434/api/tags
 ```
 </details>
 
-<details>
-<summary><b>Issue: Report only 167 bytes (too small)</b></summary>
-
-**Cause:** LLM not being called or returning errors
-
-**Solution:**
-```bash
-# Test LLM directly
-python3 << 'EOF'
-from shared.gateway.providers import call_llm
-result = call_llm("Write a 2-sentence summary.")
-print(f"Result ({len(result)} chars): {result}")
-EOF
-
-# Should return ~50+ chars
-```
-</details>
-
 ---
 
 ## 📚 References
@@ -680,7 +662,7 @@ EOF
 2. **Enhance risk scoring** - Add ML-based anomaly detection
 3. **Scale to production** - Add Redis for distributed state
 4. **Review fundamentals:**
-   - **[Lab 01: PII Summarizer](../01-pii-safe-summarizer/)** - Prompt injection defense
+   - **[Lab 01: PII Summarizer](../pii-safe-summarizer/)** - Prompt injection defense
    - **[Lab 02: RAG Copilot](../rag_copilot/)** - Indirect injection defense
 
 ---
