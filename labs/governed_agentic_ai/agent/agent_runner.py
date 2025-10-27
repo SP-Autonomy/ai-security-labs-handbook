@@ -106,7 +106,7 @@ def run_analyst(run_id, agent_id, summary):
         
         # Re-raise to stop the workflow
         raise
-    
+
 def run_writer(run_id, agent_id, report):
     log_agent_event(run_id, agent_id, "start_write", {"report_preview": report.get("report", "")[:200]})
     # request write_to_file
@@ -129,7 +129,7 @@ def orchestrate(question="Summarize compliance state for project X", scenario="h
     """
     run_id = new_run_id()
     
-    # Load catalog for validation (optional - agents are hardcoded for this demo)
+    # Load catalog for validation
     catalog = load_catalog()
     agent_list = catalog.get("agents", [])
     
@@ -177,7 +177,7 @@ def orchestrate(question="Summarize compliance state for project X", scenario="h
             "injected_by": "orchestrator_simulation"
         })
     
-    # Step 3: Run analyst
+    # Step 3: Run analyst (may raise exception if exfil detected)
     report = run_analyst(run_id, analyst_id, research)
     
     # Step 4: Test unauthorized tool access
@@ -188,24 +188,54 @@ def orchestrate(question="Summarize compliance state for project X", scenario="h
                 "filename": "bad.txt",
                 "content": "I should not write this"
             })
+            
+            # If we reach here, the unauthorized call succeeded (BAD!)
             append_evidence({
-                "type": "unauthorized_result",
+                "type": "unauthorized_success",
                 "run_id": run_id,
                 "result": illicit,
-                "warning": "Unauthorized tool call succeeded - this should not happen!"
+                "warning": "Unauthorized tool call succeeded - CRITICAL SECURITY FAILURE!"
             })
+            
+            # Terminate workflow - unauthorized access should never succeed
+            raise ValueError("CRITICAL: Unauthorized tool access was not blocked by OPA!")
+            
         except Exception as e:
+            error_msg = str(e)
+            
             # Expected: OPA should block this
-            append_evidence({
-                "type": "unauthorized_block",
-                "run_id": run_id,
-                "agent": researcher_id,
-                "tool": "write_to_file",
-                "error": str(e),
-                "status": "blocked_as_expected"
-            })
+            if "not allowed to use tool" in error_msg or "opa_policy_denied" in error_msg:
+                # Unauthorized attempt was blocked (expected)
+                append_evidence({
+                    "type": "unauthorized_block",
+                    "run_id": run_id,
+                    "agent": researcher_id,
+                    "tool": "write_to_file",
+                    "error": error_msg,
+                    "status": "blocked_as_expected"
+                })
+                
+                # TERMINATE WORKFLOW - An agent attempted unauthorized action
+                # For security, we must fail the entire workflow
+                append_evidence({
+                    "type": "workflow_terminated",
+                    "run_id": run_id,
+                    "reason": "unauthorized_tool_attempt",
+                    "termination_policy": "fail_on_security_violation"
+                })
+                
+                # Re-raise to stop workflow and return blocked status
+                raise ValueError(f"Workflow terminated: Agent '{researcher_id}' attempted unauthorized tool access")
+            else:
+                # Some other error occurred
+                append_evidence({
+                    "type": "unexpected_error",
+                    "run_id": run_id,
+                    "error": error_msg
+                })
+                raise
     
-    # Step 5: Run writer
+    # Step 5: Run writer (only reached if no security violations)
     write_res = run_writer(run_id, writer_id, report)
     
     # Step 6: Complete workflow

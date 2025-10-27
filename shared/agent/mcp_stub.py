@@ -128,25 +128,67 @@ class MCP:
         if tool_name not in self.tools:
             raise ToolError("tool_not_found")
         tool = self.tools[tool_name]
+    
+        # 1. Initial Basic OPA authorization check
+        opa_allowed = True
+        try:
+            self.check_allowed(tool_name, agent_id, run_id)
+        except UnauthorizedTool:
+            opa_allowed = False
+    
+        # 2. Context-aware risk analysis
+        try:
+            from labs.governed_agentic_ai.security.context_analyzer import context_analyzer
         
-        # 1. Authorization check (OPA)
-        self.check_allowed(tool_name, agent_id, run_id)
+            risk_assessment = context_analyzer.analyze_tool_call(
+                agent_id=agent_id,
+                tool_name=tool_name,
+                payload=payload,
+                run_id=run_id,
+                opa_allowed=opa_allowed
+            )
         
-        # 2. Schema validation
+            # Act based on risk assessment
+            if risk_assessment["action"] == "block":
+                raise UnauthorizedTool(
+                    f"Blocked: Risk score {risk_assessment['risk_score']}/100. "
+                    f"Reasons: {', '.join(risk_assessment['reasons'])}"
+                )
+        
+            elif risk_assessment["action"] == "log_and_allow":
+                # Allow but with extra logging
+                append_evidence({
+                    "type": "medium_risk_allowed",
+                    "run_id": run_id,
+                    "agent": agent_id,
+                    "tool": tool_name,
+                    "risk_score": risk_assessment["risk_score"],
+                    "reasons": risk_assessment["reasons"],
+                    "decision": "allowed_with_monitoring"
+                })
+        
+            # "allow" action proceeds normally
+        
+        except ImportError:
+            # Fallback to basic OPA check if context analyzer not available
+            if not opa_allowed:
+                raise UnauthorizedTool(f"agent '{agent_id}' not allowed to use tool '{tool_name}'")
+    
+        # 3. Schema validation
         self.enforce_schema(tool, payload)
-        
-        # 3. Budget enforcement
+    
+        # 4. Budget enforcement
         self.enforce_budget(tool, run_id)
-        
-        # 4. Execute tool
+    
+        # 5. Execute tool
         t0 = time.time()
         result = tool.func(payload, sandbox_dir=str(self.sandbox_dir))
         elapsed = time.time() - t0
-        
-        # 5. Record metrics
+    
+        # 6. Record metrics
         self.record_call(tool, run_id, elapsed)
-        
-        # 6. Log to evidence
+    
+        # 7. Log to evidence
         append_evidence({
             "type": "tool_call",
             "run_id": run_id,
@@ -157,7 +199,7 @@ class MCP:
             "elapsed": elapsed,
             "authorized": True
         })
-        
+    
         return result
 
 mcp = MCP()
