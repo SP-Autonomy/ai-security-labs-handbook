@@ -673,7 +673,7 @@ make run-api
 ### Continue Learning
 
 1. **[📖 Lab 02: Secure RAG Copilot](../rag_copilot/)** - RAG-specific security patterns
-2. **[📖 Lab 03: Governed AI Agents](../03-governed-agentic-ai/)** - Agentic AI Governance and Observatibility
+2. **[📖 Lab 03: Governed AI Agents](../governed_agentic_ai/)** - Agentic AI Governance and Observatibility
 ---
 
 <div align="center">
